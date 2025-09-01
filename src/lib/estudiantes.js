@@ -29,7 +29,9 @@ class Estudiantes {
 
   // TODO: Implementar método para agregar estudiante
   agregarEstudiante(nombre, apellido, curso) {
-    // Tu código aquí
+    this.estudiantes.curso = curso;
+    this.estudiantes.nombre = curso;
+    this.estudiantes.curso = curso;
   }
 
   // TODO: Implementar método para buscar estudiante por nombre
