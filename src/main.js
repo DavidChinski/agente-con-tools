@@ -31,7 +31,6 @@ const ollamaLLM = new Ollama({
 });
 
 
-// TODO: Implementar la Tool para buscar por nombre
 const buscarPorNombreTool = tool({
     name: "buscarPorNombre",
     description: "Usa esta función para encontrar estudiantes por su nombre",
@@ -39,11 +38,11 @@ const buscarPorNombreTool = tool({
         nombre: z.string().describe("El nombre del estudiante a buscar"),
     }),
     execute: ({ nombre }) => {
-        // Tu código aquí
+        const resultado = estudiantes.buscarEstudiantePorNombre(nombre);
+        return JSON.stringify(resultado);
     },
 });
 
-// TODO: Implementar la Tool para buscar por apellido
 const buscarPorApellidoTool = tool({
     name: "buscarPorApellido",
     description: "Usa esta función para encontrar estudiantes por su apellido",
@@ -51,11 +50,11 @@ const buscarPorApellidoTool = tool({
         apellido: z.string().describe("El apellido del estudiante a buscar"),
     }),
     execute: ({ apellido }) => {
-       return;
+       const resultado = estudiantes.buscarEstudiantePorApellido(apellido);
+       return JSON.stringify(resultado);
     },
 });
 
-// TODO: Implementar la Tool para agregar estudiante
 const agregarEstudianteTool = tool({
     name: "agregarEstudiante",
     description: "Usa esta función para agregar un nuevo estudiante",
@@ -65,17 +64,18 @@ const agregarEstudianteTool = tool({
         curso: z.string().describe("El curso del estudiante (ej: 4A, 4B, 5A)"),
     }),
     execute: ({ nombre, apellido, curso }) => {
-        return;
+        const nuevo = estudiantes.agregarEstudiante(nombre, apellido, curso);
+        return `Estudiante agregado: ${nuevo.nombre} ${nuevo.apellido} (${nuevo.curso})`;
     },
 });
 
-// TODO: Implementar la Tool para listar estudiantes
 const listarEstudiantesTool = tool({
     name: "listarEstudiantes",
     description: "Usa esta función para mostrar todos los estudiantes",
     parameters: z.object({}),
     execute: () => {
-        return;
+        const lista = estudiantes.listarEstudiantes();
+        return JSON.stringify(lista);
     },
 });
 
