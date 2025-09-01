@@ -27,24 +27,29 @@ class Estudiantes {
     }
   }
 
-  // TODO: Implementar método para agregar estudiante
   agregarEstudiante(nombre, apellido, curso) {
-    // Tu código aquí
+    const nuevoEstudiante = { nombre, apellido, curso };
+    this.estudiantes.push(nuevoEstudiante);
+    this.guardarEstudiantes();
+    return nuevoEstudiante;
   }
 
-  // TODO: Implementar método para buscar estudiante por nombre
   buscarEstudiantePorNombre(nombre) {
-    // Tu código aquí
+    const nombreLower = nombre.toLowerCase();
+    return this.estudiantes.filter(
+      (est) => est.nombre.toLowerCase() === nombreLower
+    );
   }
 
-  // TODO: Implementar método para buscar estudiante por apellido
   buscarEstudiantePorApellido(apellido) {
-    // Tu código aquí
+    const apellidoLower = apellido.toLowerCase();
+    return this.estudiantes.filter(
+      (est) => est.apellido.toLowerCase() === apellidoLower
+    );
   }
 
-  // TODO: Implementar método para listar estudiantes
   listarEstudiantes() {
-    // Tu código aquí
+    return this.estudiantes;
   }
 }
 
